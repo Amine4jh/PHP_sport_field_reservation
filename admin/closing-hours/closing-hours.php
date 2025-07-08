@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 $statement = $connect->query("SELECT * FROM terrains ORDER BY nom");
                                                 $res = $statement->fetchAll(PDO::FETCH_OBJ);
                                                 foreach ($res as $row) {
-                                                    echo "<option value='$row->id'>$row->nom</option>";
+                                                    echo "<option value='" . htmlspecialchars($row->id) . "'>" . htmlspecialchars($row->nom) . "</option>";
                                                 }
                                             ?>
                                         </select>
@@ -175,11 +175,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 foreach ($data as $row) { ?>
                                     <tr>
                                         <th scope="row"><?= $row->id ?></th>
-                                        <td><?= $row->terrain_name ?></td>
+                                        <td><?= htmlspecialchars($row->terrain_name) ?></td>
                                         <td><?= $row->date ?></td>
                                         <td><?= $row->debut_fermeture ?></td>
                                         <td><?= $row->fin_fermeture ?></td>
-                                        <td><?= $row->motif ?></td>
+                                        <td><?= htmlspecialchars($row->motif) ?></td>
                                         <td>
                                             <button id="delete" data-id=<?= $row->id ?> class="btn btn-danger me-3">Delete</button>
                                         </td>
