@@ -154,4 +154,14 @@ GitHub: [Amine4jh](https://github.com/Amine4jh)
 
 ## 📸 Screenshots
 
+ - **Admin Dashboard**:
 ![Admin Dashboard Preview](assets/images/preview/admin_dashboard.png)
+
+ - **Client Dashboard**:
+![Admin Dashboard Preview](assets/images/preview/client_dashboard.png)
+
+ - **Login**:
+![Admin Dashboard Preview](assets/images/preview/login.png)
+
+ - **Registration**:
+![Admin Dashboard Preview](assets/images/preview/registration.png)
