@@ -152,8 +152,6 @@ GitHub: [Amine4jh](https://github.com/Amine4jh)
 
 ---
 
-## 📸 Screenshot Suggestions
+## 📸 Screenshots
 
-```markdown
 ![Admin Dashboard Preview](assets/images/preview/admin_dashboard.png)
-```
