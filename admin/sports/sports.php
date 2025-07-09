@@ -1,8 +1,7 @@
 <?php
 
-require("../elements/header-nav.php");
-// require("../elements/header.php");
 require("../../database.php");
+require("../elements/header-nav.php");
 
 $sportNameError = "";
 $sportRenameError = "";
@@ -39,7 +38,6 @@ function getData() {
 }
 $data = getData();
 
-// require("../elements/nav.php");
 ?>
 
 
@@ -75,7 +73,7 @@ $data = getData();
                         echo "
                             <div class='col-md-4 mb-3'>
                                 <div class='card' id='sportCard'>
-                                    <h5 class='card-header'>{$sport->nom}</h5>
+                                    <h5 class='card-header'>" . htmlspecialchars($sport->nom) . "</h5>
                                     <div class='card-body'>
                                         <button id='rename' data-id='{$sport->id}' class='btn btn-shadow btn-info me-2'><strong>Rename</strong></button>
                                         <button id='delete' data-id='{$sport->id}' class='btn btn-shadow btn-danger'><strong>Delete</strong></button>
