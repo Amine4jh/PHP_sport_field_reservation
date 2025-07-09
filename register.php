@@ -80,7 +80,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pwdError = "Password must be at least 8 characters";
     $valid = false;
   }
-  if ($cnfPwd !== $pwd) {
+  if (!$cnfPwd) {
+    $cnfPwdError = "This field is required";
+    $valid = false;    
+  } else if ($cnfPwd !== $pwd) {
     $cnfPwdError = "Passwords not matching";
     $valid = false;
   }
