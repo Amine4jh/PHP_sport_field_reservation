@@ -1,7 +1,7 @@
 <?php
 
-require("../elements/header-nav.php"); 
 require("../../database.php");
+require("../elements/header-nav.php"); 
 
 $monthStart = date("Y-m-01");
 
@@ -37,11 +37,6 @@ function calcRate($new, $old) {
 }
 
 ?>
-<?php // require("../elements/header.php") ?>
-<?php // require("../elements/nav.php") ?>
-
-
-
     <!-- [ Main Content ] start -->
     <div class="pc-container">
         <div class="pc-content">
@@ -55,7 +50,6 @@ function calcRate($new, $old) {
                             </div>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="../dashboard/index.php">Home</a></li>
-                                <!-- <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li> -->
                                 <li class="breadcrumb-item" aria-current="page">Dashboard</li>
                             </ul>
                         </div>
@@ -154,8 +148,8 @@ function calcRate($new, $old) {
                                         ?>
                                             <tr>
                                                 <td class="text-muted"><?= $row->id ?></td>
-                                                <td><?= $row->user_name ?></td>
-                                                <td><?= $row->terrain_name ?></td>
+                                                <td><?= htmlspecialchars($row->user_name) ?></td>
+                                                <td><?= htmlspecialchars($row->terrain_name) ?></td>
                                                 <td><?= $row->date ?></td>
                                                 <td><?= $row->heure_debut ?></td>
                                                 <td><?= $row->heure_fin ?></td>
