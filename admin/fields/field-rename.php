@@ -30,7 +30,11 @@ if ($data) {
 }
 
 if ($valid) {
-    $statement = $connect->prepare("UPDATE terrains SET addresse='$address',sport_id='$sport',nom='$nom' WHERE id=$id");
+    $statement = $connect->prepare("UPDATE terrains SET addresse= :address,sport_id= :sport,nom= :nom WHERE id=:id");
+    $statement->bindParam("address", $address);
+    $statement->bindParam("sport", $sport);
+    $statement->bindParam("nom", $nom);
+    $statement->bindParam("id", $id);
     $statement->execute();
     header("Location:fields.php");
     $_SESSION["modifyFieldSuccess"] = "Field modified successfully!";
