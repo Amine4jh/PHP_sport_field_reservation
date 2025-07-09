@@ -56,7 +56,7 @@ if (isset($_SESSION["delAdmin"])) {
                         foreach ($data as $user) { ?>
                             <tr>
                                 <th scope="row"><?= $user->id ?></th>
-                                <td><?= $user->nom ?></td>
+                                <td><?= htmlspecialchars($user->nom) ?></td>
                                 <td><?= $user->email ?></td>
                                 <td>
                                     <button id="delAdmin" data-id=<?= $user->id ?> class="btn btn-danger me-3" <?= count($data) === 1 ? "disabled" : "" ?>>Delete</button>
