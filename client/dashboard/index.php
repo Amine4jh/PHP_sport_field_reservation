@@ -155,8 +155,8 @@ function calcRate($new, $old) {
                                         ?>
                                             <tr>
                                                 <td class="text-muted"><?= $row->id ?></td>
-                                                <td><?= $row->user_name ?></td>
-                                                <td><?= $row->terrain_name ?></td>
+                                                <td><?= htmlspecialchars($row->user_name) ?></td>
+                                                <td><?= htmlspecialchars($row->terrain_name) ?></td>
                                                 <td><?= $row->date ?></td>
                                                 <td><?= $row->heure_debut ?></td>
                                                 <td><?= $row->heure_fin ?></td>
@@ -197,10 +197,9 @@ function calcRate($new, $old) {
                         <div class="card mb-3">
                             <img class="img-fluid card-img-top" src="../../assets/images/fields/<?= $row->image ?>" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $row->nom ?></h5>
-                                <p class="card-text"><?= $row->addresse ?></p>
-                            <p class="card-text"><small class="text-muted"><?= $row->sport_name ?></small></p>
-                            <!-- Add link here -->
+                                <h5 class="card-title"><?= htmlspecialchars($row->nom) ?></h5>
+                                <p class="card-text"><?= htmlspecialchars($row->addresse) ?></p>
+                            <p class="card-text"><small class="text-muted"><?= htmlspecialchars($row->sport_name)?></small></p>
                             <button class="btn btn-success"><a id="resLink" href="../reservations/get-fields.php?field_id=<?= $row->id ?>">Reserve</a></button>    
                             </div>
                         </div>
