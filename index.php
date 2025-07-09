@@ -81,13 +81,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (password_verify($pwd, $data[$i]["password_hash"])) {
                     if ($data[$i]["role"] === "admin") {
                         // Go To Admin Page
-                        $_SESSION["user"] = [$data[$i]["id"], $data[$i]["nom"], $data[$i]["email"], $data[$i]["avatar"]];
+                        $_SESSION["user"] = [$data[$i]["id"], htmlspecialchars($data[$i]["nom"]), $data[$i]["email"], $data[$i]["avatar"]];
                         header("Location: admin/dashboard/index.php");
                     } else {
                         // Go To Client Page
                         $_SESSION["client"] = [
                             "id" => $data[$i]["id"],
-                            "nom" => $data[$i]["nom"],
+                            "nom" => htmlspecialchars($data[$i]["nom"]),
                             "email" => $data[$i]["email"],
                             "avatar" => $data[$i]["avatar"]
                         ];
