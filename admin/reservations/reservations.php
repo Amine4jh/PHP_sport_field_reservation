@@ -102,8 +102,8 @@ $data = $statement->fetchAll(PDO::FETCH_OBJ);
                         foreach ($data as $res) { ?>
                             <tr>
                                 <th scope="row"><?= $res->id ?></th>
-                                <td><?= $res->user_name ?></td>
-                                <td><?= $res->terrain_name ?></td>
+                                <td><?= htmlspecialchars($res->user_name) ?></td>
+                                <td><?= htmlspecialchars($res->terrain_name) ?></td>
                                 <td><?= $res->date ?></td>
                                 <td><?= $res->heure_debut ?></td>
                                 <td><?= $res->heure_fin ?></td>
