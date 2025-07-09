@@ -46,12 +46,14 @@ $email = "";
 $nameError = "";
 $emailError = "";
 $pwdError = "";
+$cnfPwdError = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $name = $_POST["name"];
   $email = $_POST["email"];
   $pwd = $_POST["password"];
+  $cnfPwd = $_POST["confirm-pwd"];
   $todayDate = date("Y-m-d");
   $av = 'avatar-1.jpg';
 
@@ -77,6 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else if (strlen($pwd) < 8) {
     $pwdError = "Password must be at least 8 characters";
     $valid = false;
+  }
+  if ($cnfPwd !== $pwd) {
+    $cnfPwdError = "Passwords not matching";
+    $valid = false;
+  }
+
+  $stmt = $connect->query("SELECT * FROM utilisateurs");
+  $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+  foreach ($res as $row) {
+    if ($email === $row->email) {
+      $emailError = "Email already used from another user";
+      $valid = false;
+    }
   }
 
   if ($valid) {
@@ -133,6 +148,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <label class="form-label">Password</label>
               <input type="password" name="password" class="form-control" placeholder="Password">
               <small id="input-error"><?php echo $pwdError; ?></small>
+            </div>
+            <div class="form-group mb-3">
+              <label class="form-label">Confirm password</label>
+              <input type="password" name="confirm-pwd" class="form-control" placeholder="Confirm password">
+              <small id="input-error"><?php echo $cnfPwdError; ?></small>
             </div>
             <p class="mt-4 text-sm text-muted">By Signing up, you agree to our <a href="#" class="text-primary"> Terms of Service </a> and <a href="#" class="text-primary"> Privacy Policy</a></p>
             <div class="d-grid mt-3">
