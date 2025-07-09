@@ -94,10 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         header("Location: client/dashboard/index.php"); 
                     }
                 } else {
+                    $emailError = "";
                     $pwdError = "Password is incorrect";
                 }
             } else {
-                $emailError = "User not found";
+                $emailError = "No user have this email. Please, register if you aren't yet";
             }
         }
     }
