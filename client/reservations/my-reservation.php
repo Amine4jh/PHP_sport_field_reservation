@@ -115,7 +115,7 @@ $data = $statement->fetchAll(PDO::FETCH_OBJ);
                             }
                             foreach (array_unique($sports) as $sport) {
                         ?>
-                            <a class="dropdown-item" href="filter-sport.php?nom=<?= $sport ?>"><?= $sport ?></a>
+                            <a class="dropdown-item" href="filter-sport.php?nom=<?= htmlspecialchars($sport) ?>"><?= htmlspecialchars($sport) ?></a>
                         <?php 
                             }
                         ?>
@@ -141,8 +141,8 @@ $data = $statement->fetchAll(PDO::FETCH_OBJ);
                             <tr>
                                 <th scope="row"><?= $res->id ?></th>
                                 <td><?= $user["nom"] ?></td>
-                                <td><?= $res->sport_name ?></td>
-                                <td><?= $res->terrain_name ?></td>
+                                <td><?= htmlspecialchars($res->sport_name) ?></td>
+                                <td><?= htmlspecialchars($res->terrain_name) ?></td>
                                 <td><?= $res->date ?></td>
                                 <td><?= $res->heure_debut ?></td>
                                 <td><?= $res->heure_fin ?></td>
