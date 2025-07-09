@@ -37,7 +37,7 @@ function getData() {
 }
 $data = getData();
 
-// Add field
+// Add sport field
 if (isset($_POST["add"])) {
     $name = $_POST["nom"];
     $addresse = $_POST["addresse"];
@@ -59,7 +59,7 @@ if (isset($_POST["add"])) {
     }
     foreach ($data as $field) {
         if ($name === $field->nom) {
-            $nameError = "$name is already exist";
+            $nameError = htmlspecialchars($name) . " is already exist";
             $valid = false;
         }
         if ($addresse === $field->addresse) {
@@ -87,7 +87,7 @@ if (isset($_POST["add"])) {
             $statement->bindParam("img", $filename);
             $statement->execute();
             $data = getData();
-            $toastMessage = "$name added successfully";
+            $toastMessage = htmlspecialchars($name) . " added successfully";
             $toastColor = "success";
         } else {
             $imgError = "Can't save uploaded image";
@@ -137,8 +137,8 @@ if (isset($_POST["add"])) {
                                 </div>
                                 <div class='col-md-8'>
                                     <div class='card-body'>
-                                        <h5 class='card-title'><?= $field->nom ?></h5>
-                                        <p class='card-text'>Address: <?= $field->addresse ?></p>
+                                        <h5 class='card-title'><?= htmlspecialchars($field->nom) ?></h5>
+                                        <p class='card-text'>Address: <?= htmlspecialchars($field->addresse) ?></p>
                                         <p class='card-text'><small class='text-muted'><?= $res[0]->nom ?></small></p>
                                     </div>
                                     <div class='card-footer d-flex justify-content-end'>
@@ -168,23 +168,23 @@ if (isset($_POST["add"])) {
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <input type="text" name="nom" class="form-control" placeholder="Field name..." value="<?= $name ?>">
-                                <small id="input-error"><?= htmlspecialchars($nameError) ?></small>
+                                <small id="input-error"><?= $nameError ?></small>
                                 <input type="text" name="addresse" class="form-control mt-3" placeholder="Field address..." value="<?= $addresse ?>">
-                                <small id="input-error"><?= htmlspecialchars($addressError) ?></small>
+                                <small id="input-error"><?= $addressError ?></small>
                                 <select name="sport" class="form-control mt-3">
                                     <option value="">Choose sport...</option>
                                     <?php 
                                         $statement = $connect->query("SELECT * FROM sports ORDER BY nom");
                                         $results = $statement->fetchAll(PDO::FETCH_OBJ);
                                         foreach($results as $sport) {
-                                            echo "<option value='$sport->id'>$sport->nom</option>";
+                                            echo "<option value='$sport->id'>" . htmlspecialchars($sport->nom) . "</option>";
                                         }
                                         ?>
                                 </select>
-                                <small id="input-error"><?= htmlspecialchars($sportError) ?></small>
+                                <small id="input-error"><?= $sportError ?></small>
                                 <label for="image" id="formLabel">Field image:</label>
                                 <input type="file" name="image" class="form-control" accept=".jpg,.jpeg,.png,.gif">
-                                <small id="input-error"><?= htmlspecialchars($imgError) ?></small>
+                                <small id="input-error"><?= $imgError ?></small>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><strong>Close</strong></button>
@@ -227,7 +227,7 @@ if (isset($_POST["add"])) {
                                         $statement = $connect->query("SELECT * FROM sports");
                                         $results = $statement->fetchAll(PDO::FETCH_OBJ);
                                         foreach($results as $sport) {
-                                            echo "<option value='$sport->id'>$sport->nom</option>";
+                                            echo "<option value='$sport->id'>" . htmlspecialchars($sport->nom) . "</option>";
                                         }
                                         ?>
                                 </select>
