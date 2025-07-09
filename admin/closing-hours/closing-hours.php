@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 $statement = $connect->query("SELECT * FROM terrains ORDER BY nom");
                                                 $res = $statement->fetchAll(PDO::FETCH_OBJ);
                                                 foreach ($res as $row) {
-                                                    echo "<option value='" . htmlspecialchars($row->id) . "'>" . htmlspecialchars($row->nom) . "</option>";
+                                                    echo "<option value='$row->id'>" . htmlspecialchars($row->nom) . "</option>";
                                                 }
                                             ?>
                                         </select>
