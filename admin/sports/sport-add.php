@@ -23,7 +23,7 @@ if (!$sportName) {
 }
 foreach ($data as $sport) {
     if ($sportName === $sport->nom) {
-        $errorMsg = "$sportName is already exist";
+        $errorMsg = htmlspecialchars($sportName) . " is already exist";
         $valid = false;
     }
 }

@@ -139,7 +139,7 @@ if (isset($_POST["add"])) {
                                     <div class='card-body'>
                                         <h5 class='card-title'><?= htmlspecialchars($field->nom) ?></h5>
                                         <p class='card-text'>Address: <?= htmlspecialchars($field->addresse) ?></p>
-                                        <p class='card-text'><small class='text-muted'><?= $res[0]->nom ?></small></p>
+                                        <p class='card-text'><small class='text-muted'><?= htmlspecialchars($res[0]->nom) ?></small></p>
                                     </div>
                                     <div class='card-footer d-flex justify-content-end'>
                                         <button id='rename' data-id='<?= $field->id ?>' class='btn btn-shadow btn-info me-2'><strong>Modify</strong></button>

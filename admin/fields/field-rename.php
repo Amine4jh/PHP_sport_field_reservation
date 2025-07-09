@@ -15,14 +15,20 @@ if (!$nom || !$address || !$sport) {
     $valid = false;
 }
 
-$statement = $connect->query("SELECT id FROM terrains WHERE nom = '$nom' AND id != $id");
+$statement = $connect->prepare("SELECT id FROM terrains WHERE nom = :nom AND id != :id");
+$statement->bindParam("nom", $nom);
+$statement->bindParam("id", $id);
+$statement->execute();
 $data = $statement->fetch();
 if ($data) {
     $modifyError = "Sport field is already exist!";
     $valid = false;
 }
 
-$statement = $connect->query("SELECT id FROM terrains WHERE addresse = '$address' AND id != $id");
+$statement = $connect->prepare("SELECT id FROM terrains WHERE addresse = :address AND id != :id");
+$statement->bindParam("address", $address);
+$statement->bindParam("id", $id);
+$statement->execute();
 $data = $statement->fetch();
 if ($data) {
     $modifyError = "Sport field is already exist!";
