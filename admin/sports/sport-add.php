@@ -29,10 +29,11 @@ foreach ($data as $sport) {
 }
 
 if ($valid) {
-    $statement = $connect->prepare("INSERT INTO sports(nom) VALUES (?)");
-    $statement->execute([$sportName]);
+    $statement = $connect->prepare("INSERT INTO sports (nom) VALUES (:nom)");
+    $statement->bindParam("nom", $sportName);
+    $statement->execute();
     header("Location:sports.php");
-    $_SESSION["add-success"] = "$sportName added successfully!";
+    $_SESSION["add-success"] = htmlspecialchars($sportName) . " added successfully!";
 } else {
     header("Location:sports.php");
     $_SESSION["add-error"] = $errorMsg;
