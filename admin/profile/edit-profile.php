@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $statement = $connect->query("SELECT * FROM utilisateurs WHERE id = $user[0]");
             $i = $statement->fetch();
-            $_SESSION["user"] = [$i["id"], $i["nom"], $i["email"], $i["avatar"]];
+            $_SESSION["user"] = [$i["id"], htmlspecialchars($i["nom"]), $i["email"], $i["avatar"]];
 
             header("Location: view-profile.php");
             $_SESSION["edit-profile"] = "Profile modified successfully";
