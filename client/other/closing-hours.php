@@ -53,11 +53,11 @@ require("../elements/header-nav.php");
                         foreach ($data as $res) { ?>
                             <tr>
                                 <th scope="row"><?= $res->id ?></th>
-                                <td><?= $res->terrain_name ?></td>
+                                <td><?= htmlspecialchars($res->terrain_name) ?></td>
                                 <td><?= $res->date ?></td>
                                 <td><?= $res->debut_fermeture ?></td>
                                 <td><?= $res->fin_fermeture ?></td>
-                                <td><?= $res->motif ?></td>
+                                <td><?= htmlspecialchars($res->motif) ?></td>
                             </tr>
                     <?php
                         }
