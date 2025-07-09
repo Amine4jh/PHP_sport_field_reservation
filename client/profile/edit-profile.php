@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $i = $statement->fetch();
             $_SESSION["client"] = [
               "id" => $i["id"],
-              "nom" => $i["nom"],
+              "nom" => htmlspecialchars($i["nom"]),
               "email" => $i["email"],
               "avatar" => $i["avatar"]
             ];
